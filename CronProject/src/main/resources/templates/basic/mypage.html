@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/header :: header(~{::title})">
+        <title>마이페이지</title>
+    </head>
+    <body>
+        <div class="mypage-top-area">
+            <div class="mypage-top">
+                <div class="mypage-prev">
+                        <img src="/img/back.png" alt="뒤로가기" onclick="goBack()">
+                </div>
+                <div class="mypage-info">
+                    <p class="mypage-top-name font-middle-w" th:text="${member.nickName}">회원 닉네임</p>
+                    <p class="mypage-top-posts font-small"><span th:text="${postCount}">1,991</span>posts</p>
+                </div>
+            </div>
+        </div>
+        <div class="mypage-area" th:attr="data-personal=${member.personal}">
+            <div class="top-background">
+                <!--백그라운드 이미지 추가 작업 진행 할 것-->
+                <img th:src="@{${member.backgroundImg}}" alt="백그라운드 이미지">
+            </div>
+            <div class="mypage-contents">
+                <div class="mypage-profile">
+                    <div class="main_container">
+                        <div class="mypage-profile-area">
+                            <div class="mypage-img-area">
+                                <img th:src="@{${member.profileImg}}" alt="프로필 이미지">
+                            </div>
+                            <div th:switch="${mypageStatus}">
+
+                                <div class="mypage-button-area" th:case="isOwnProfile">
+                                    <!--자기 자신의 경우-->
+                                    <a th:href="@{{personal}/settings/profile(personal=${member.personal})}">
+                                        <button class="mypage-button">
+                                            <p class="font-middle-w">프로필 수정</p>
+                                        </button>
+                                    </a>
+                                </div>
+                                <div class="mypage-button-area" th:case="isFollowingProfile">
+                                    <!--팔로우를 했을 경우-->
+                                    <form th:action="@{/{personal}/notifications(personal=${member.personal})}" method="get">
+                                        <button class="mypage-button">
+                                            <p class="font-middle-w">알림</p>
+                                        </button>
+                                    </form>
+                                    <form th:action="@{/follow/cancel/{personal}(personal=${member.personal})}" method="post">
+                                        <button class="mypage-button">
+                                            <p class="font-middle-w">팔로잉</p>
+                                        </button>
+                                    </form>
+                                </div>
+
+                                <div class="mypage-button-area" th:case="isUnknownProfile">
+                                    <!--모르는 사람의 경우-->
+                                    <form th:action="@{/follow/new/{personal}(personal=${member.personal})}" method="post">
+                                        <button class="mypage-button">
+                                            <p class="font-middle-w">팔로우</p>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mypage-title-area">
+                            <p class="mypage-title-nickname font-middle-w" th:text="${member.nickName}">회원닉네임</p>
+                            <p class="mypage-title-id font-small" th:value="${member.personal}" th:text="|@${member.personal}|">회원 고유 ID</p>
+                        </div>
+                        <div class="mypage-info-area">
+                            <p class="mypage-info" th:text="${member.introduce}">
+                                소개가 들어갑니다.
+                            </p>
+                        </div>
+                        <div class="mypage-tag-area">
+                            <p class="mypage-tag-title">태그</p>
+                            <div class="mypage-tags">
+                                <!--span 안에 태그가 들어갑니다-->
+                                <span class="tag-area" th:each="userTag : ${member.userTag}"><span th:text="${userTag.tagName}"># 자유게시판</span></span>
+                            </div>
+                        </div>
+                        <div class="mypage-follow-area">
+                            <p class="mypage-follow"><span class="follow" th:text="${counts.followingCount}">100</span> 팔로잉</p>
+                            <p class="mypage-follow"><span class="foller" th:text="${counts.followerCount}">200</span> 팔로워</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="Tab" th:switch="${mypageTab}">
+                    <div class="Tab-toggle" onclick="TabMove('default')">
+                        <div th:case="default" class="Tab_activate"></div>
+                        <p>게시물</p>
+                    </div>
+                    <div class="Tab-toggle" onclick="TabMove('comments')">
+                        <div th:case="comments" class="Tab_activate"></div>
+                        <p>답글</p>
+                    </div>
+                    <div class="Tab-toggle" onclick="TabMove('likes')">
+                        <div th:case="likes" class="Tab_activate"></div>
+                        <p>좋아요</p>
+                    </div>
+                </div>
+                <div class="mypage-content">
+                    <div th:replace="~{fragments/Post :: post-comment}"></div>
+                </div>
+            </div>
+        </div>
+        <div th:replace="~{fragments/nav :: bottomNav}"></div>
+        <div th:replace="~{fragments/dim :: dim}"></div>
+
+
+    </body>
+
+    <script th:replace="~{fragments/script :: heart}"></script>
+    <script th:replace="~{fragments/script :: comment}"></script>
+    <script th:replace="~{fragments/script :: retwit}"></script>
+    <script th:replace="~{fragments/script :: sessionBack}"></script>
+    <script th:replace="~{fragments/script :: detail}"></script>
+    <script th:replace="~{fragments/script :: search}"></script>
+    <script th:replace="~{fragments/script :: moreOption}"></script>
+</html>

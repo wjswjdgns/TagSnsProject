@@ -1,0 +1,411 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+body{
+    font-size:18px;
+    font-family: 'Noto Sans KR', sans-serif;
+
+    /*드래그 방지 코드*/
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none
+      
+}
+
+a{
+    padding:0;
+    margin:0;
+}
+
+li{
+   list-style-type: none; 
+}
+
+.title_font{
+    font-size:2rem;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.font-big{
+    font-size:2rem;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.font-middlebig{
+    font-size:1rem;
+    font-weight: 400;
+}
+
+.font-middle{
+    font-size:1rem;
+    font-weight: 400;
+    
+}
+.font-middle-w{
+    font-size:1rem;
+    font-weight: 600;
+    
+}
+.font-middle-small{
+    font-size:0.75rem;
+    font-weight: 500;
+    
+}
+
+.font-middle-small-w{
+    font-size:0.75rem;
+    font-weight: 600;
+}
+
+.font-small{
+    font-size:0.7rem;
+    font-weight: 500;
+    
+}
+
+.font-info{
+    font-size:1rem;
+    font-weight: 800;
+    
+}
+
+.font-tag{
+    color:#00AAFF;
+    font-size:1rem;
+    font-weight: 600;
+}
+
+.font-tag-small{
+    color:#00AAFF;
+    font-size:0.7rem;
+    font-weight: 500;
+}
+
+
+.sub-title{
+    font-size:1.3rem;
+    font-weight: 600;
+}
+
+.error{
+    margin-top:10px;
+    font-size:0.8rem;
+    font-weight: 400;
+    color:#ff2a48;
+}
+
+input{
+    width:100%;
+    height:1.8rem;
+    font-size:0.8rem;
+    border:none;
+}
+
+input[type="radio"]{
+    width:10%;
+    height: 1.4rem;
+}
+
+button{
+    border-radius: 0.5rem;
+    width:100%;
+    height: 2.8rem;
+    font-size:0.8rem;
+    background-color: black;
+    color: #fff;
+    border:none;
+}
+
+.line{
+    border-bottom: 1px solid;
+}
+
+.empty_area_top{
+   margin-top :0.5rem;
+}
+.empty_area_bottom{
+   margin-bottom :0.5rem;
+}
+
+p{
+    margin: 0;
+}
+
+
+.profile-image{
+    border-radius: 3rem;
+    width:3rem;
+    height: 3rem;
+}
+
+.all-follow{
+    position: relative;
+    background-color: #2a2c2d;
+    border-radius: 4rem;
+    border:solid 1px;
+    width:4rem;
+    height:4rem;
+    margin-top:1rem;
+    margin-bottom:1rem;
+}
+
+.all-follow p{
+    position: absolute;
+    color:#fff;
+    top:46%;
+    left:50%;
+    transform: translate(-46%, -50%);
+}
+
+.activate{
+    position:absolute;
+    width:1rem;
+    height: 1rem;
+    border-radius: 1rem;
+    top:1rem;
+    left:0.2rem;
+    background-color:#00AAFF;
+    z-index: 999;
+}
+
+
+/*서브 타이틀*/
+.sub-area{
+    height: 100%;
+    margin-left:1rem;
+    margin-right:1rem;
+}
+
+.sub-title-area{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+.sub-title-area img{
+    width:2rem;
+}
+
+.sub-area01{
+    width:20%;
+} 
+
+.sub-area02{
+    text-align: center;
+    width:60%;
+}
+
+.sub-area03{
+    text-align: right;
+    width:20%;
+}
+
+.word-tag{
+    font-size:1rem;
+    color:#555;
+}
+
+
+/* 특정 글*/
+
+/*************************************************/
+/* class Name
+프로필 사진 : profile-area > profile-image
+본문 : postarea > post-title
+       postarea > post-word
+       poatarea > post-icon*/
+/*************************************************/
+
+/*포스트 영역*/
+.Post{
+    padding-bottom:5rem;
+}
+.post-item-area{
+    border-bottom:solid 1px #eee;
+}
+
+.post-item{
+    padding-top:1rem;
+    padding-bottom:1rem;
+    display: flex;
+    padding-left:1rem;
+    padding-right:1rem;
+}
+
+.profile-area{
+    text-align: center;
+    width:15%;
+}
+.postarea,
+.comment-word-area{
+    width:85%;
+    padding-left:1rem;
+}
+
+.post-title,
+.commnet-title-area{
+    display: flex;
+    align-items: flex-end;
+}
+.post-title p{
+    display: inline-block;
+}
+.post-title p:nth-child(1),
+.post-title p:nth-child(2),
+.commnet-title-area p:nth-child(1),
+.commnet-title-area p:nth-child(2){
+    margin-right:0.4rem;
+}
+
+.post-title div,
+.commnet-title-area div,
+.detail-word-name div{
+    margin-left:auto;
+}
+
+.post-word{
+    margin-top:0.5rem;
+    width:100%;
+}
+
+.post-word img,
+.commnet-word-area img,
+.prev-word-content img{
+    margin-top:1.5rem;
+    margin-bottom:1rem;
+    width:100%;
+}
+
+.post-icon{
+    display: flex;
+}
+.post-icon img{
+    width:1.4rem;
+    height: 1.4rem;
+    margin-right:0.5rem;
+}
+.post-icon p{
+    margin-right:1.5rem;
+}
+
+.post-tag{
+    display:inline-block;
+}
+
+.comment-icon{
+    display: flex;
+}
+.comment-icon img{
+    width:1.4rem;
+    height: 1.4rem;
+    margin-right:0.5rem;
+}
+.comment-icon p{
+    margin-right:1.5rem;
+}
+
+.comment,
+.heart,
+.retwit{
+    display: flex;    
+    align-items: center;
+    color:#666;
+}
+
+
+/*태그*/
+.tag-area{
+    border:1px solid #ddd;
+    padding-top:0.3rem;
+    padding-bottom:0.3rem;
+    padding-left:1rem;
+    padding-right:1rem;
+    font-size:0.8rem;
+    display: inline-block;
+    margin-right:0.3rem;
+    margin-bottom:0.3rem;
+}
+/*셀렉트*/
+.more-image{
+    width:1rem;
+}
+.more-icon{
+    margin-right:1rem;
+    width:1.5rem;
+    height:1.5rem;
+}
+
+/*세팅*/
+.setting-area{
+    margin-left:auto;
+}
+
+.setting-area img{
+    width:1.5rem;
+}
+
+/*체크박스*/
+
+[type="checkbox"] {
+    appearance: none;
+    position: relative;
+    border: max(2px, 0.1em) solid gray;
+    border-radius: 1.25em;
+    width:3rem;
+    height: 1.75rem;
+    /*
+    width: 2.25em;
+    height: 1.25em;
+    */
+  }
+  
+  [type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    transform: scale(0.8);
+    background-color: gray;
+    transition: left 250ms linear;
+  }
+  
+  [type="checkbox"]:checked {
+    background-color: #00AAFF;
+    border-color: #00AAFF;
+  }
+  
+  [type="checkbox"]:checked::before {
+    background-color: white;
+    left: 1.15rem;
+  }
+
+
+
+/*업로드 이미지 미리보기*/
+.upload-image img,
+.prev-word-content img,
+.detail-word-write img,
+.commnet-word-area img{
+width:100%;
+height:100%;
+}
+
+/*업로드 이미지*/
+#image-preview{
+    position:relative;
+}
+
+/*업로드 이미지 취소 아이콘*/
+.cancel-image{
+    position:absolute;
+    width:1rem !important;
+    height:1rem !important;
+    right:0.5rem;
+    top:0.5rem;
+}

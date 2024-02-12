@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/header :: header(~{::title})">
+        <title>메인 페이지</title>
+    </head>
+    <body>
+        <div class="main-area">
+            <div class="Top">
+                <div class="main_container">
+                    <div class="profile">
+                        <a th:href="@{'/' + ${member.personal}}">
+                            <img class="profile-image" th:src="@{${member.profileImg}}" alt="profile2">
+                        </a>
+                        <div class="personal-id">
+                            <p th:text="|@${member.personal}|" class="font-middle-w">고유 아이디</p>
+                        </div>
+                        <div class="setting-area" onclick="setting()">
+                            <img class="setting" src="/img/setting.png" alt="로그아웃">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--콘텐츠 영역입니다.-->
+            <div class="content">
+                <!--친구 창-->
+                <div class="Follow" th:if="${not #lists.isEmpty(followlist)}">
+                    <div class="follow-area">
+                        <ul class="follow-list">
+                            <li class="follow-click" onclick="allMain()">
+                                <div class="activate" th:if="${checkAllMember}"></div>
+                                <div class="all-follow">
+                                    <p class="title_font">A</p>
+                                </div>
+                            </li>
+                            <li class="follow-click" onclick="selectMain(this)" th:each="followMember : ${followlist}">
+                                <div class="my-follow">
+                                    <!--팔로우 기능 구현 후 제대로 동작하는지 확인 할 것-->
+                                    <div class="activate" th:if="${followMember.select}"></div>
+                                    <img class="profile-image" th:src="${followMember.profileImg}" alt="profile1">
+                                    <p class="memberPersonal font-small" th:attr="data-member-personal=${followMember.personal}" th:text="|@${followMember.personal}|"></p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--포스트가 올라오는 영역-->
+                <div class="Post">
+                    <div th:replace="~{fragments/Post :: post-comment}"></div>
+                </div>
+
+            </div>
+            <div th:replace="~{fragments/nav :: bottomNav}"></div>
+        </div>
+
+        <div th:replace="~{fragments/dim :: dim}"></div>
+    </body>
+
+    <script th:replace="~{fragments/script :: default}"></script>
+    <script th:replace="~{fragments/script :: heart}"></script>
+    <script th:replace="~{fragments/script :: comment}"></script>
+    <script th:replace="~{fragments/script :: retwit}"></script>
+    <script th:replace="~{fragments/script :: sessionBack}"></script>
+    <script th:replace="~{fragments/script :: detail}"></script>
+    <script th:replace="~{fragments/script :: search}"></script>
+    <script th:replace="~{fragments/script :: moreOption}"></script>
+
+
+
+</html>

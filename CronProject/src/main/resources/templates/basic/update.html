@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/header :: header(~{::title})">
+        <title>프로필 수정</title>
+    </head>
+    <body>
+        <div class="main-area">
+            <div class="Top">
+                <div class="sub-area">
+                    <div class="sub-title-area">
+                        <div class="sub-area01">
+                            <p onclick="goBack()">취소</p>
+                        </div>
+                        <div class="sub-area02">
+                            <p class="sub-title">프로필 수정</p>
+                        </div>
+                        <div class="sub-area03">
+                            <p onclick="sendUpdateData()">저장</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="update-area">
+                <div class="update-background">
+                    <div class="update-background-dark"></div>
+                    <div class="update-background-img">
+                        <form id="profileBackground" enctype="multipart/form-data">
+                            <input type="file" id="backgroundInput" accept="accept='.jpg, .jpeg, .png'" onchange="profileBackgroundImg()"/>
+                            <label for="backgroundInput" id="ProfileBackgroundButton"></label>
+                        </form>
+                    </div>
+                    <img th:src="@{${member.backgroundImg}}" id="backgroundImg" alt="백그라운드 이미지">
+                </div>
+                <div class="update-content">
+                    <div class="main_container">
+                        <div class="update-profile">
+                            <div class="update-profile-area">
+                                <div class="update-profile-dark"></div>
+                                <div class="update-profile-img">
+                                    <form id="profileUserImg" enctype="multipart/form-data">
+                                        <input type="file" id="UserImageInput" accept="accept='.jpg, .jpeg, .png'" onchange="profileUserImg()"/>
+                                        <label for="UserImageInput" id="ProfileUserImgButton"></label>
+                                    </form>
+                                </div>
+                                <img th:src="@{${member.profileImg}}" id="profileImg" alt="프로필 이미지">
+                            </div>
+                        </div>
+                        <div class="update-name">
+                            <p class="font-middle-small">이름</p>
+                            <input type="text" id="nickName" th:value="${member.nickName}">
+                        </div>
+                        <div class="update-info">
+                            <p class="font-middle-small">자기소개</p>
+                            <textarea name="introduce" id="introduce" cols="40" rows="5" th:text="${member.introduce}"></textarea>
+                        </div>
+                        <div class="update-tag">
+                            <p class="font-middle-small">태그</p>
+                            <p class="error tagUpdateError"></p>
+
+                            <!--입력하는 input 박스-->
+                            <div class="tag-input-box">
+                                <input type="text" class="tag_input" placeholder="추가할 태그를 작성해주세요" maxlength="20" onkeydown="handleKeyDown(event)">
+                            </div>
+
+                            
+                            <!--div를 추가-->
+                            <div class="tag-box">
+                                <div class="tag-box-content" th:each="userTag : ${UserTags}">
+                                    <p th:text="${userTag.tagName}">hello</p>
+                                    <input type="hidden" th:value="${userTag.tagName}">
+                                    <img src="/img/Button-X.png" alt="취소버튼" onclick="removeTag(this)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+    </body>
+    <script th:replace="~{fragments/script :: updateProfile}"></script>
+    <script th:replace="~{fragments/script :: image}"></script>
+    <script th:replace="~{fragments/script :: sessionBack}"></script>
+</html>

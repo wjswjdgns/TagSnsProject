@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/header :: header(~{::title})">
+        <title>상세 포스트</title>
+    </head>
+    <body>
+        <div class="main-area">
+            <div class="Top">
+                <div class="sub-area">
+                    <div class="sub-title-area">
+                        <div class="sub-area01" onclick="goBack()">
+                            <img src="/img/back.png" alt="back">
+                        </div>
+                        <div class="sub-area02">
+                            <p class="sub-title">게시물</p>
+                        </div>
+                        <div class="sub-area03">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sub-content">
+                <div class="main_container">
+                    <div class="detail-post" th:attr="data-post-id=${post.postId}, data-post-check=${post.postCheck}, data-post-personal=${post.personal}" onclick="ActiveDetail(event)">
+                        <div class="detail-profile">
+                            <a th:href="@{'/' + ${post.personal}}">
+                                <img class="profile-image" th:src="${post.profileImg}" alt="profile1">
+                            </a>
+                        </div>
+                        <div class="detail-word">
+                            <div class="detail-word-name">
+                                <p class="font-middle-w" th:text="${post.nickName}">닉네임</p>
+                                <p class="font-middle-small" th:text="|@${post.personal}|">고유 ID</p>
+
+                                <div class="more-options" th:if="${post.loginMemberPost}" onclick="DetailMainShowSelectOptions(event)">
+                                    <img class="more-image" src="/img/more.png" alt="더보기">
+                                </div>
+                            </div>
+                            <div class="detail-word-write">
+
+                                <p class="word-tag" th:if="${post.TagName} != null">
+                                    <span class="font-tag" th:text="|#${post.TagName}|" >태그 이름이 들어갑니다. </span>
+                                    <span class="font-tag-small" th:text="|@${post.TagMemberPersonal}|">태그 작성자 고유 ID가 들어갑니다.</span>
+                                </p>
+
+                                <p class="font-middle" th:text="${post.content}">
+                                    포스트 내용이 들어갑니다.
+                                </p>
+                                <img th:if="${post.imgUrl} != null" th:src="${post.imgUrl}" alt="postimg">
+
+                                <div class="detail-post-info">
+                                    <p class="font-middle" th:text="|${post.fUpdateAt}에 게시되었습니다.|">포맷팅된 시간이 노출 됩니다.</p>
+                                    <div class="detail-post-status">
+                                        <p class="font-middle">재게시 <span class="font-middle-w detail-retwit-count" th:text="${post.retwitCount}"></span><span class="font-middle-w">회</span></p>
+                                        <p class="font-middle">마음에 들어요 <span class="font-middle-w detail-heart-count" th:text="${post.likeCount}"></span><span class="font-middle-w">회</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="detail-icon">
+                    <div class="comment" onclick="detailwriteComment()">
+                        <img src="/img/commnet.png" alt="commnet-icon">
+                    </div>
+                    <div class="retwit" onclick="sendRetwitDataDetail()">
+                        <img class="retwit-icon" src="/img/retwit.png" th:if="${!post.retwitCheck}" th:attr="data-post-retwit=${post.retwitCheck}" alt="retwit-icon">
+                        <img class="retwit-icon" src="/img/rfill.png" th:if="${post.retwitCheck}" th:attr="data-post-retwit=${post.retwitCheck}" alt="retwit-icon">
+                    </div>
+                    <div class="heart" onclick="sendHeartDataDetail()">
+                        <img class="heart-icon" th:if="${!post.likeCheck}" th:attr="data-post-heart=${post.likeCheck}" src="/img/heart.png" alt="heart-icon">
+                        <img class="heart-icon" th:if="${post.likeCheck}" th:attr="data-post-heart=${post.likeCheck}" src="/img/fill.png" alt="heart-icon">
+                    </div>
+                </div>
+
+
+                <div class="detail-commnet">
+
+                    <!--댓글 영역-->
+                    <div class="commnet-area" th:each="comment :${post.commentList}">
+                        <div class="main_container">
+                            <div class="commnet-user-area" th:attr="data-post-id=${comment.postId}, data-post-check=${comment.postCheck}, data-post-personal=${comment.personal}" onclick="ActiveDetail(event)">
+                                <div class="commnet-profile">
+                                    <a th:href="@{'/' + ${comment.personal}}">
+                                        <img class="profile-image" th:src="${comment.profileImg}" alt="profile1">
+                                    </a>
+                                    <div class="commnet-line" th:if="${comment.ownerComment} != null"></div>
+                                </div>
+                                <div class="comment-word-area">
+                                    <div class="commnet-title-area">
+                                        <p class="commnet-title font-middle-w" th:text="${comment.nickName}">닉네임</p>
+                                        <p class="commnet-id font-middle-small" th:text="${comment.personal}">고유 ID</p>
+                                        <p class="commnet-time font-middle-small" th:text="${comment.fUpdateAt}">시간</p>
+
+                                        <div class="more-options" th:if="${comment.loginMemberComment}" onclick="DetailSubShowSelectOptions(event)">
+                                            <img class="more-image" src="/img/more.png" alt="더보기">
+                                        </div>
+
+                                    </div>
+                                    <div class="commnet-word-area">
+                                        <p class="commnet-word font-middle" th:text="${comment.content}">댓글 내용이 들어갑니다.</p>
+                                        <img th:if="${comment.imgUrl} != null" th:src="${comment.imgUrl}" alt="postimg">
+                                    </div>
+                                    <div class="comment-icon">
+                                        <div class="comment" onclick="detailwriteCommentComment(event)">
+                                            <img src="/img/commnet.png" alt="commnet-icon">
+                                            <p class="comment-count" th:text="${comment.commentCount}">22</p>
+                                        </div>
+                                        <div class="retwit" onclick="sendRetwitDataDetailComment(event)">
+                                            <img class="retwit-icon" src="/img/retwit.png" th:if="${!comment.retwitCheck}" th:attr="data-post-retwit=${comment.retwitCheck}" alt="retwit-icon">
+                                            <img class="retwit-icon" src="/img/rfill.png" th:if="${comment.retwitCheck}" th:attr="data-post-retwit=${comment.retwitCheck}" alt="retwit-icon">
+                                            <p class="retwit-count" th:text="${comment.retwitCount}">2</p>
+                                        </div>
+                                        <div class="heart" onclick="sendHeartDataDetailComment(event)">
+                                            <img class="heart-icon" th:if="${!comment.likeCheck}" th:attr="data-post-heart=${comment.likeCheck}" src="/img/heart.png" alt="heart-icon">
+                                            <img class="heart-icon" th:if="${comment.likeCheck}" th:attr="data-post-heart=${comment.likeCheck}" src="/img/fill.png" alt="heart-icon">
+                                            <p class="heart-count" th:text="${comment.likeCount}">100</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 대댓글 영역 -->
+                            <div class="commnet-user-area" th:if="${comment.ownerComment} != null" th:attr="data-post-id=${comment.ownerComment.postId}, data-post-check=${comment.ownerComment.postCheck}">
+                                <div class="commnet-profile">
+                                    <img class="profile-image" th:src="${comment.ownerComment.profileImg}" alt="profile1">
+                                </div>
+                                <div class="comment-word-area">
+                                    <div class="commnet-title-area">
+                                        <p class="commnet-title font-middle-w" th:text="${comment.ownerComment.nickName}">닉네임</p>
+                                        <p class="commnet-id font-middle-small" th:text="${comment.ownerComment.personal}">고유 ID</p>
+                                        <p class="commnet-time font-middle-small" th:text="${comment.ownerComment.fUpdateAt}">시간</p>
+
+                                        <div class="more-options" th:if="${comment.ownerComment.loginMemberComment}" onclick="DetailshowSelectOptions(event)">
+                                            <img class="more-image" src="/img/more.png" alt="더보기">
+                                        </div>
+                                    </div>
+                                    <div class="commnet-word-area">
+                                        <p class="commnet-word font-middle" th:text="${comment.ownerComment.content}">댓글 내용이 들어갑니다.</p>
+                                        <img th:if="${comment.ownerComment.imgUrl} != null" th:src="${comment.ownerComment.imgUrl}" alt="postimg">
+                                    </div>
+                                    <div class="comment-icon">
+                                        <div class="comment" onclick="detailwriteCommentComment(event)">
+                                            <img src="/img/commnet.png" alt="commnet-icon">
+                                            <p class="comment-count" th:text="${comment.ownerComment.commentCount}">22</p>
+                                        </div>
+                                        <div class="retwit" onclick="sendRetwitDataDetailComment(event)">
+                                            <img class="retwit-icon" src="/img/retwit.png" th:if="${!comment.ownerComment.retwitCheck}" th:attr="data-post-retwit=${comment.ownerComment.retwitCheck}" alt="retwit-icon">
+                                            <img class="retwit-icon" src="/img/rfill.png" th:if="${comment.ownerComment.retwitCheck}" th:attr="data-post-retwit=${comment.ownerComment.retwitCheck}" alt="retwit-icon">
+                                            <p class="retwit-count" th:text="${comment.ownerComment.retwitCount}">2</p>
+                                        </div>
+                                        <div class="heart" onclick="sendHeartDataDetailComment(event)">
+                                            <img class="heart-icon" th:if="${!comment.ownerComment.likeCheck}" th:attr="data-post-heart=${comment.ownerComment.likeCheck}" src="/img/heart.png" alt="heart-icon">
+                                            <img class="heart-icon" th:if="${comment.ownerComment.likeCheck}" th:attr="data-post-heart=${comment.ownerComment.likeCheck}" src="/img/fill.png" alt="heart-icon">
+                                            <p class="heart-count" th:text="${comment.ownerComment.likeCount}">100</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div th:replace="~{fragments/dim :: dim}"></div>
+    </body>
+
+    <script th:replace="~{fragments/script :: comment}"></script>
+    <script th:replace="~{fragments/script :: retwit}"></script>
+    <script th:replace="~{fragments/script :: heart}"></script>
+    <script th:replace="~{fragments/script :: sessionBack}"></script>
+    <script th:replace="~{fragments/script :: moreOption}"></script>
+    <script th:replace="~{fragments/script :: detail}"></script>
+</html>

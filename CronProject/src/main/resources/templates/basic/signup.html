@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/header :: header(~{::title})">
+        <title>회원가입</title>
+    </head>
+    <style>
+        .filedError{
+            border-color:#bd2130;
+        }
+    </style>
+    <body>
+        <div class="login-prev"><a th:href="@{/members/login}"><img src="/img/back.png" alt="뒤로가기"></a></div>
+        <div class="login_container">
+            <!--타이틀-->
+            <div class="title">
+                <div class="title_text">
+                    <p class="title_font">New<br>Account</p>
+                </div>
+            </div>
+            <!--입력 폼-->
+            <form role="form" action="/members/new" th:object="${userForm}" method="post">
+                <!--ID 등록-->
+                <div class="create-id-area">
+                    <p class="font-middle">ID 등록</p>
+                    <input type="text" th:field="*{name}" placeholder="아이디를 입력해주세요">
+                    <div class="line"></div>
+                    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error">오류 항목이 들어갑니다.</p>
+                    <p th:if="${#fields.hasErrors('name') && #fields.hasGlobalErrors() && #fields.globalErrors()[0].codes.contains('error.duplicateId')}" th:text="#{error.duplicateId}" class="error"></p>
+                </div>
+                
+                <!--PW 등록-->
+                <div class="create-pw-area">
+                    <p class="font-middle">패스워드 등록</p>
+                    <input type="password" th:field="*{password}" placeholder="패스워드를 입력해주세요">
+                    <div class="line"></div>
+                    <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error">오류 항목이 들어갑니다.</p>
+                    <p th:if="${#fields.hasErrors('password') && #fields.hasGlobalErrors() && #fields.globalErrors()[0].codes.contains('error.ValidatePassword')}" th:text="#{error.ValidatePassword}" class="error"></p>
+                </div>
+
+                <div class="create-id-area">
+                    <p class="font-middle">닉네임 등록</p>
+                    <input type="text" th:field="*{nickname}" placeholder="닉네임을 입력해주세요">
+                    <div class="line"></div>
+                    <p th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}" class="error">오류 항목이 들어갑니다.</p>
+                </div>
+                
+                <!--고유 ID 등록-->
+                <div class="create-pw-area">
+                    <p class="font-middle">고유 ID 등록</p>
+                    <!-- 글씨 쓰면 자동으로 특정문자가 앞에 올 수 있도록 자바스크립트 작성 필요-->
+                    <input type="text" th:field="*{personal}" placeholder="@ 고유ID를 입력해주세요">
+                    <div class="line"></div>
+                    <p class="font-small empty_area_top">다른 이들이 당신을 알 수 있는 고유 ID입니다. <br> 신중하게 작성해주세요</p>
+                    <p th:if="${#fields.hasErrors('personal')}" th:errors="*{personal}" class="error">오류 항목이 들어갑니다.</p>
+                    <p th:if="${#fields.hasErrors('personal') && #fields.hasGlobalErrors() && #fields.globalErrors()[1].codes.contains('error.duplicatePersonal')}" th:text="#{error.duplicatePersonal}" class="error"></p>
+                </div>
+                <!--다음-->
+                <button type="submit" class="next_button">태그 즐기기</button>
+            </form>
+        
+        </div>
+    </body>
+</html>

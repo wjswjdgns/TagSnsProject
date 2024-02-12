@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/header :: header(~{::title})">
+        <title>알림</title>
+    </head>
+    <body>
+        <div class="main-area">
+            <div class="Top">
+                <div class="main_container">
+                    <div class="profile">
+                        <a th:href="@{'/' + ${member.personal}}">
+                            <img class="profile-image" th:src="@{${member.profileImg}}" alt="profile2">
+                        </a>
+                        <div class="personal-id">
+                            <p th:text="|@${member.personal}|" class="font-middle-w">고유 아이디</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="Tab">
+                    <div class="Tab-toggle" th:onclick="|location.href='@{/notifications/default}'|">
+                        <div class="Tab_activate" th:if="${notificationsStatus} == default"></div>
+                        <p>All</p>
+                    </div>
+                    <div class="Tab-toggle" th:onclick="|location.href='@{/notifications/tag}'|">
+                        <div class="Tab_activate" th:if="${notificationsStatus} == tag"></div>
+                        <p>Tag</p>
+                    </div>
+                </div>
+            </div>
+            <!--콘텐츠 영역입니다.-->
+            <div class="notice-content">
+                <div th:if="${notificationsStatus} == default">
+                    <div class="notice-content-area" th:each="notification : ${notificationList}" th:attr="data-post-id=${notification.postId}, data-post-check=${notification.postCheck}" onclick="redirectPost(this)">
+                        <div class="main_container" th:switch="${notification.status}">
+                            <div class="notice-area TypePost"  th:case="1">
+                                <div class="notice-icon">
+                                    <img src="/img/notice-notice.png" alt="notice">
+                                </div>
+                                <div class="notice-word-area">
+                                    <div class="notice-profile">
+                                        <img th:src="@{${notification.profileImg}}" alt="알림 프로필">
+                                    </div>
+                                    <div class="notice-title">
+                                        <p class="font-middle-small"><span th:text="|@${notification.personal}|">고유 ID</span> 님의 새로운 글이 올라왔습니다. </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="notice-area TypeLike" th:case="2">
+                                <div class="notice-icon">
+                                    <img src="/img/fill.png" alt="notice">
+                                </div>
+                                <div class="notice-word-area">
+                                    <div class="notice-profile">
+                                        <img th:src="@{${notification.profileImg}}" alt="알림 프로필">
+                                    </div>
+                                    <div class="notice-title">
+                                        <p class="font-middle-small"><span th:text="|@${notification.personal}|">고유 ID</span> 님이 내 글을 마음에 들어합니다. </p>
+                                        <p class="font-small" th:text="${notification.content}"></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="notice-area TypeRetwit" th:case="3">
+                                <div class="notice-icon">
+                                    <img src="/img/rfill.png" alt="notice">
+                                </div>
+                                <div class="notice-word-area">
+                                    <div class="notice-profile">
+                                        <img th:src="@{${notification.profileImg}}" alt="알림 프로필">
+                                    </div>
+                                    <div class="notice-title">
+                                        <p class="font-middle-small-w"><span th:text="|@${notification.personal}|">고유 ID</span> 님이 내 글을 재게시했습니다. </p>
+                                        <p class="font-small" th:text="${notification.content}"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div th:if="${notificationsStatus} == tag">
+                    <div class="notice-content-area" th:each="notification : ${notificationList}" th:attr="data-post-id=${notification.postId}, data-post-check=${notification.postCheck}" onclick="redirectPost(this)">
+                        <div class="main_container" th:switch="${notification.status}">
+                            <div class="notice-area TypeTag" th:case="4">
+                                <div class="notice-icon">
+                                    <img src="/img/notice-notice.png" alt="notice">
+                                </div>
+                                <div class="notice-word-area">
+                                    <div class="notice-profile">
+                                        <img th:src="@{${notification.profileImg}}" alt="알림 프로필">
+                                    </div>
+                                    <div class="notice-title">
+                                        <p class="font-middle-small-w"><span th:text="|#${notification.userTagName}|">태그 이름</span> 태그에 새로운 글이 올라왔습니다.</p>
+                                        <p class="font-small" th:text="${notification.content}"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div th:replace="~{fragments/nav :: bottomNav}"></div>
+        </div>
+
+    </body>
+
+    <script th:replace="~{fragments/script :: sessionBack}"></script>
+    <script th:replace="~{fragments/script :: notification}"></script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/header :: header(~{::title})">
+        <title>로그인</title>
+    </head>
+    <body>
+        <div class="login_container">
+            <!--타이틀-->
+            <div class="title">
+                <div class="title_text">
+                    <p class="title_font">안녕하세요 <br>태그입니다.</p>
+                    <p class="font-middlebig empty_area_top">다양한 사람들과 <br>소통을 해보세요!</p>
+                </div>
+                <div class="title_icon">
+                    <img src="/img/icon.png" alt="icon">
+                </div>
+            </div>
+            <!--입력 폼-->
+            <form action="/members/login" th:object="${loginForm}" method="post">
+                <div class="login_filed">
+                    <div class="id_filed">
+                        <p class="font-middle">ID</p>
+                        <input type="text" th:field="*{name}" placeholder="아이디를 입력해주세요">
+                    </div>
+                    <div class="pw_filed">
+                        <p class="font-middle">PW</p>
+                        <input type="password" th:field="*{password}" placeholder="비밀번호를 입력해주세요">
+                    </div>
+                    <p th:if="${#fields.hasGlobalErrors()}" th:each="err: ${#fields.globalErrors()}" th:text="${err}" class="error">전체 오류 메시지</p>
+                    <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error">오류 항목이 들어갑니다.</p>
+                    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error">오류 항목이 들어갑니다.</p>
+
+                    <button type="submit" class="login_button">LOGIN</button>
+                </div>
+            </form>
+
+            <!--회원가입
+
+            1단계로 우선 이동
+
+            -->
+
+            <a th:href="@{/members/new}"><button class="signup_button">SIGNUP</button></a>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header(~{::title})">
+    <title>검색</title>
+</head>
+<body>
+        <div class="main-area">
+            <div class="Top">
+                <div class="main_container">
+                    <div class="profile">
+                        <a th:href="@{'/' + ${member.personal}}">
+                            <div class="search-profile">
+                                <img class="profile-image" th:src="${member.profileImg}" alt="profile2">
+                            </div>
+                        </a>
+                        <div class="search-area">
+                            <form action="/search/result" method="GET">
+                                <input type="text" id="searchField" name="searchField" placeholder="검색어를 입력해주세요">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="top-tag-select">
+                <div class="my-tag-title">
+                    <p class="font-middle-w">인기 급 상승 태그</p>
+                </div>
+                <div class="my-tag-area" th:each="recommendedTag : ${recommendedTagList}">
+                    <div class="search-tag" onclick="sendTagData(this)">
+                        <div class="search-tag-img">
+                            <img class="profile-image" th:src="${recommendedTag.profileImg}" alt="profile2">
+                        </div>
+                        <div class="search-tag-name">
+                            <p><span class="font-middle-w selectTagName" th:text="|#${recommendedTag.tagName}|">태그 이름</span></p>
+                            <p><span class="font-middle-small selectPersonalName" th:text="|@${recommendedTag.personal}|">고유 ID</span></p>
+                        </div>
+                        <div class="search-tag-count">
+                            <p><span class="font-small" th:text="|${recommendedTag.tagCount}태그|">Count</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="my-tag-select">
+                <div class="my-tag-title">
+                    <p class="font-middle-w">나를 위한 태그 선택</p>
+                </div>
+                <div class="my-tag-area" th:each="followTag : ${followTagList}">
+                    <div class="search-tag" onclick="sendTagData(this)">
+                        <div class="search-tag-img">
+                            <img class="profile-image" th:src="${followTag.profileImg}" alt="profile2">
+                        </div>
+                        <div class="search-tag-name">
+                            <p><span class="font-middle-w selectTagName" th:text="|#${followTag.tagName}|">태그 이름</span></p>
+                            <p><span class="font-middle-small selectPersonalName" th:text="|@${followTag.personal}|">고유 ID</span></p>
+                        </div>
+                        <div class="search-tag-count">
+                            <p><span class="font-small" th:text="|${followTag.tagCount}태그|">Count</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div th:replace="~{fragments/nav :: bottomNav}"></div>
+        </div>
+
+       
+    </body>
+    <script th:replace="~{fragments/script :: search}"></script>
+    <script th:replace="~{fragments/script :: sessionBack}"></script>
+</html>

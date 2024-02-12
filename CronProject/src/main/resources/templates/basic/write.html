@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/header :: header(~{::title})">
+        <title>글쓰기</title>
+    </head>
+    <body>
+
+        <div th:replace="~{fragments/TagPopup :: popup}"></div>
+
+        <div class="main-area">
+            <div class="Top">
+                <div class="sub-area">
+                    <div class="sub-title-area">
+                        <div class="sub-area01">
+                            <p onclick="goBack()">취소</p>
+                        </div>
+                        <div class="sub-area02">
+                        </div>
+                        <div class="sub-area03">
+                            <p th:if="${writeStatus} == prevPost or ${writeStatus} == default" onclick="sendPostData()">게시하기</p>
+                            <p th:if="${writeStatus} == editPost" onclick="EditPostData()">게시하기</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="write-area">
+                <div class="prev-content" th:if="${writeStatus} == prevPost" th:attr="data-post-id=${post.postId},data-post-check=${check}">
+                    <div class="prev-profile">
+                        <img class="profile-image" th:src="${post.profileImg}" alt="프로필 이미지">
+                        <div class="commnet-line"></div>
+                    </div>
+                    <div class="prev-word">
+                        <div class="prev-word-title">
+                            <p class="font-middle-w"><span class="user-nickname" th:text="${post.nickName}">닉네임</span></p>
+                            <p class="font-middle-small"><span class="user-id" th:text="|@${post.personal}|">고유 ID</span></p>
+                        </div>
+                        <div class="prev-word-content">
+                            <p class="font-middle">
+                                <span class="prev-user-content" th:text="${post.content}">
+                                    포스트 내용이 들어가게 됩니다.
+                                </span>
+                            </p>
+                            <img th:if="${post.imgUrl} != null" th:src="${post.imgUrl}" alt="postimg">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="write-content">
+                    <div class="write-profile">
+                        <img class="profile-image" th:src="@{${member.profileImg}}" alt="프로필 이미지">
+                    </div>
+
+                    <input class="editPostId" type="hidden" th:if="${writeStatus} == editPost" th:value="${post.postId}">
+                    <input class="editPostCheck" type="hidden" th:if="${writeStatus} == editPost" th:value="${post.isPost}">
+
+                    <div class="write-word">
+
+                        <!--태그 적용하기  Data-selectTagId  Data-selectTagName Data-selectMemberPersonal -->
+                        <div class="selectTag" th:if="${writeStatus} == editPost and ${post.useTag}" >
+                            <p class="post-tag" th:attr="Data-selectTagId=${post.tagId}, Data-selectTagName=${post.tagName}, Data-selectMemberPersonal=${post.tagOwner}">
+                                <span class="font-tag selectTagName" th:text="|#${post.tagName}|">#태그를 작성합니다</span>
+                                <span class="font-tag-small selectPersonalName" th:text="|@${post.tagOwner}|">@test2</span>
+                            </p>
+                        </div>
+
+                        <!--글 쓰기 -->
+                        <div class="write-word-wording">
+                            <textarea th:id="writePost" th:if="${writeStatus} != editPost" placeholder="무슨 일이 일어나고 있나요?" maxlength="160"></textarea>
+                            <textarea th:id="writePost" th:if="${writeStatus} == editPost" th:field="${post.content}" placeholder="무슨 일이 일어나고 있나요?" maxlength="160"></textarea>
+                        </div>
+
+
+                        <!--이미지 지정-->
+                        <div th:id="image-preview" class="upload-image" th:if="${writeStatus} != editPost"></div>
+
+                        <div th:id="image-preview" class="upload-image" th:if="${writeStatus} == editPost">
+                            <img th:if="${post.imgUrl} != null" class="preview-image" th:src="${post.imgUrl}" alt="postimg">
+                            <img th:if="${post.imgUrl} != null" class="cancel-image" src="/img/cancel.png" onclick="cancelImage()" alt="Image cancel" />
+                        </div>
+
+                        <!--태그 지정-->
+                        <div class="write-word-tag activeTag" th:if="${writeStatus} == default" onclick="popup()">
+                            <p class="font-middle-small"><span >#태그지정</span></p>
+                        </div>
+
+                        <div class="write-word-tag deactiveTag" th:if="${writeStatus} == default" onclick="cancelTag(this)">
+                            <p class="font-middle-small"><span >#태그취소</span></p>
+                        </div>
+
+                        <div class="write-word-tag activeTag" th:if="${writeStatus} == editPost and ${post.isPost}" onclick="popup()" th:style="${post.useTag ? 'display:none;' : 'display:inline-block;'}">
+                            <p class="font-middle-small"><span >#태그지정</span></p>
+                        </div>
+                        <div class="write-word-tag deactiveTag" th:if="${writeStatus} == editPost and ${post.isPost}" onclick="cancelTag(this)" th:style="${post.useTag ? 'display:inline-block;' : 'display:none;'}">
+                            <p class="font-middle-small"><span >#태그취소</span></p>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="Bottom">
+                <div class="Button-img-area">
+                    <form id="imageUploadForm" enctype="multipart/form-data">
+                        <input type="file" id="imageInput" accept="accept='.jpg, .jpeg, .png'" onchange="previewImage()"/>
+                        <label for="imageInput" id="customFileButton"></label>
+                    </form>
+                </div>
+                <div class="write-check">
+                    <p class="font-middle-small"><span class="textCount">0</span>자 / <span class="textTotal">160자</span></p>
+                </div>
+            </div>
+
+
+            <script th:replace="~{fragments/script :: write}"></script>
+            <script th:replace="~{fragments/script :: image}"></script>
+            <script th:replace="~{fragments/script :: sessionBack}"></script>
+
+        </div>
+    </body>
+
+</html>

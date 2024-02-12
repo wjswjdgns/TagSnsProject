@@ -1,0 +1,1016 @@
+.main_container{
+    margin-left:1rem;
+    margin-right:1rem;
+}
+
+.main-area{
+    position: relative;
+}
+
+.login_container{
+    margin-top:100px;
+    margin-left:72px;
+    margin-right: 72px; 
+    margin-bottom: 100px;
+}
+
+
+/*로그인*/
+.login-prev{
+    position: absolute;
+    top: 2rem;
+    left:2rem;
+}
+.login-prev img{
+
+    width:1.5rem;
+    height: 1.5rem;
+}
+
+.title{
+    display: flex;
+}
+
+
+.title_icon img{
+    position: relative;
+    width: 100%;
+    height: 60%;
+}
+
+.title_text{
+    width:65%;
+}
+
+.title_icon{
+    width:35%;
+    text-align: right;
+}
+
+.login_filed{
+    margin-top:7rem;
+}
+
+.id_filed{
+    display: flex;
+    margin-bottom: 2rem;
+    border-bottom:1px solid;
+}
+
+.pw_filed{
+    display: flex;
+    margin-bottom: 1rem;
+    border-bottom:1px solid;
+}
+
+.id_filed p, .pw_filed p{
+    width:20%;
+    font-weight: 600;
+}
+
+.login_button{
+    margin-top:1rem;
+}
+
+.signup_button{
+    margin-top:0.5rem;
+}
+
+.next_button{
+    margin-top:2rem;
+}
+
+
+/*회원가입*/
+.create-id-area{
+    margin-top:30px;
+}
+
+.create-pw-area{
+    margin-top:30px;
+}
+
+.login_area{
+    border:solid 1px;
+    width:100%;
+    height: 100%;
+}
+
+
+/*상단 목록*/
+.Top{
+    border-bottom:1px solid #ddd;
+    position:fixed;
+    background-color: #fff;
+    width:100%;
+    height: 5rem;
+    top:0;
+    z-index: 9999;
+}
+
+.profile{
+    padding-top:1rem;
+    padding-bottom:1rem;
+    display: flex;
+    align-items:center;
+}
+
+.personal-id{
+    margin-left:0.5rem;
+}
+
+/*콘텐츠*/
+.content{ 
+    padding-top:5rem;
+}
+
+/*친구창 목록*/
+
+.Follow{
+    width:100%;
+    border-bottom:1px solid #ddd;
+}
+
+.my-follow{
+    display: inline-block;
+    text-align: center;
+    margin-left:0.5rem;
+}
+
+.follow-list{
+    white-space: nowrap;
+    margin:0;
+    padding:0;
+}
+
+.follow-list > li{
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+
+.follow-area{
+    overflow-x: scroll;
+    width:100%;
+    padding-left:1rem;
+    padding-right:1rem;
+}
+
+/*Nav*/
+.nav{
+    position:fixed;
+    bottom:0;
+    z-index: 9999;
+    border-top:solid 1px #ddd;
+    width:100%;
+    height: 4rem;
+    display: flex;    
+    align-items: center;
+    justify-content: space-around;
+    background-color:#fff;
+}
+
+.nav img{
+    width:2rem;
+}
+
+
+
+/*************/
+/* 상세페이지 */
+/*************/
+
+.sub-content{
+    padding-top:5rem;
+}
+
+.detail-post{
+    padding-top:1rem;
+    display: flex;
+}
+
+.detail-word{
+    padding-left:1rem;
+}
+
+.detail-word-name{
+    display: flex;
+    align-items: flex-end;
+}
+
+.detail-word-name p:last-child{
+    margin-left:0.3rem;
+}
+
+.detail-word{
+    width:100%;
+}
+
+.detail-word-write{
+    margin-top:0.5rem;
+}
+
+.detail-word-write img{
+    margin-top:1.5rem;
+    margin-bottom:1rem;
+    width:100%;
+}
+
+.detail-icon{
+    border-top:1px solid #ddd;
+    border-bottom:1px solid #ddd; 
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-top:1rem;
+    padding-bottom:1rem;
+}
+
+.detail-icon img{
+    width:1.5rem;
+    height: 1.5rem;
+}
+.detail-post-info{
+margin-top:0.5rem;
+margin-bottom:1rem;
+}
+
+.detail-post-status{
+display:flex;
+}
+.detail-post-status p{
+margin-right:0.5rem;
+}
+
+
+/*상세 댓글*/
+.commnet-area{
+    padding-top:1rem;
+    padding-bottom:1rem;
+    border-bottom:1px solid #ddd;
+}
+
+.commnet-user-area{
+    display: flex;
+    width:100%;
+}
+
+.commnet-profile{
+    width:15%;
+}
+
+.commnet-line{
+    border-left:1px solid #ccc;
+    margin-right:2rem;
+    height: 100%;
+    content: "";
+    display: inline-block;
+    margin: 0 1.5rem;
+
+}
+
+/*************/
+/*   알림    */
+/*************/
+
+.Tab{
+    display: flex;
+    justify-content: space-around;
+    padding-top:0.5rem;
+    padding-bottom:0.5rem;
+    font-weight: 600;
+    border-bottom:1px solid #ddd;
+    background-color: #fff;
+}
+.Tab_activate{
+    width:1rem;
+    height: 1rem;
+    border-radius: 1rem;
+    top:0.2rem;
+    left:0.2rem;
+    background-color:#00AAFF;
+    z-index: 999;
+    position: absolute;
+}
+
+.Tab > div{
+    padding-top:0.7rem;
+    padding-bottom:0.7rem;
+    padding-left:1.3rem;
+    padding-right:1.3rem;
+    position:relative;
+}
+
+.notice-area{
+    display: flex;
+}
+
+.notice-content{ 
+    padding-top:9rem;
+    padding-bottom:4rem;
+}
+.notice-area{
+    display: flex;
+}
+
+.notice-icon{
+    margin-right:1rem;
+}
+
+.notice-icon img{
+    width:1.5rem;
+    height: 1.5rem;
+}
+
+.notice-content-area{
+    border-bottom:1px solid #ddd;
+    padding-top:0.8rem;
+    padding-bottom:0.8rem;
+}
+
+.notice-profile{
+    display: flex;
+    align-items: flex-end;
+}
+.notice-profile img{
+    width:2rem;
+    height:2rem;
+    margin-right:0.5rem;
+    border-radius:3rem;
+}
+.notice-profile img:not(:first-of-type){
+    width:2.5rem;
+    height: 2.5rem;
+}
+.notice-title{
+margin-top:0.5rem;
+}
+
+
+/*************/
+/* 마이페이지 */
+/*************/
+
+.mypage-prev img{
+    width:1.5rem;
+    height: 1.5rem;
+    margin-right:1rem;
+}
+
+.mypage-top-area{
+    border-bottom:1px solid #ddd;
+    background-color: #fff;
+    z-index:9999;
+    position:fixed;
+    width: 100%;
+    top:0;
+}
+
+.mypage-top{
+    display: flex;
+    padding:1rem;
+}
+
+.top-background{
+    margin-top:4rem;
+    width:100%;
+    height:8.95rem;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+}
+
+.top-background img{
+    width:100%;
+    height: auto;
+}
+
+.mypage-profile{
+    padding-bottom:1rem;
+    border-bottom:1px solid #ddd;
+}
+
+.mypage-profile img{
+    border-radius: 4rem;
+    width:4rem;
+    height: 4rem;
+    position: absolute;
+    bottom:0;
+}
+
+.mypage-profile-area{
+    display: flex;
+    justify-content: space-between;
+    margin-top:0.7rem;
+}
+
+
+.mypage-button-area{
+    display: flex;
+}
+
+
+.mypage-img-area{
+    position:relative;
+}
+
+.mypage-button{
+    border:solid 1px #333;
+    border-radius: 4rem;
+    padding-top:0.3rem;
+    padding-bottom:0.3rem;
+    padding-left:1rem;
+    padding-right:1rem;
+    margin-left:0.5rem;
+    width: auto;
+    height: auto;
+    font-size: 1rem;
+    background-color: white;
+    color: #000;
+}
+
+.mypage-title-area{
+    padding-top:1rem;
+    padding-bottom:1rem;
+}
+
+.mypage-title-id{
+    color:#333;
+}
+
+.mypage-info{
+    color: #333;
+    font-size:0.9rem;
+}
+.mypage-tag-title{
+    font-size:0.9rem;
+    font-weight: 600;
+}
+
+.mypage-tag-area{
+    margin-top:1rem;
+}
+
+.mypage-tags{
+    width: 100%;
+    margin-top:0.5rem;
+
+}
+
+.mypage-follow-area{
+    display: flex;
+    margin-top:1rem;
+}
+
+.mypage-follow-area p{
+    margin-right:0.8rem;
+    font-size:0.8rem;
+}
+
+.mypage-follow{
+    font-weight: 600;
+}
+
+.mypage-tab{
+    border-top:1px solid;
+    border-bottom:1px solid;
+}
+
+.mypage-content{
+    margin-bottom:3.9rem;
+}
+
+
+/***************/
+/* 프로필 수정  */
+/**************/
+
+.update-area{
+    margin-top:5rem;
+}
+.update-background{
+    position:relative;
+    width:100%;
+    height: 8rem;
+    z-index: 9997;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+}
+.update-background-dark{
+    position:absolute;
+    background-color: #333;
+    opacity: 0.5;
+    z-index: 8888;
+    width: 100%;
+    height: 100%;
+}
+.update-background-img{
+    position:absolute;
+    z-index: 9999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.update-background-img > img{
+    width:3rem;
+}
+.update-background > img{
+    width:100%;
+    height: auto;
+}
+
+.update-content{
+    position: relative;
+    top:-1rem ;
+    z-index: 9997;
+}
+
+.update-profile{
+    width:100%;
+    margin-bottom:1rem;
+}
+
+.update-profile img{
+    width:100%;
+    border-radius: 4rem;
+    width:4rem;
+    height: 4rem;
+}
+.update-profile-area{
+    width:4rem;
+    height:4rem;
+    position:relative;
+}
+
+.update-profile-dark{
+    position:absolute;
+    background-color: #333;
+    opacity: 0.5;
+    z-index: 8888;
+    border-radius: 4rem;
+    width:4rem;
+    height: 4rem;
+}
+
+.update-profile-img{
+    position: absolute;
+    z-index: 9999;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+}
+
+.update-profile-img > img{
+    position: absolute;
+    width:2rem;
+    height: 2rem;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+}
+
+.update-name,
+.update-info,
+.update-tag{
+    border:1px solid #ddd;
+    padding:1rem;
+    margin-bottom:1rem;
+}
+
+.update-content input{
+    font-size:1rem;
+}
+.update-content textarea{
+    font-size:1rem;
+    border:none;
+    width:100%;
+}
+
+
+.tag-input-box{
+    display: flex;
+    align-items: center; /* 아이콘을 수직 중앙 정렬 */
+    padding: 10px;
+    background-color: #eff0f2;
+    width: auto; /* 너비 자동으로 조정 */
+    margin-top:1rem;
+    margin-bottom:1rem;
+}
+.tag-input-box::before{
+    content: "#";
+    color: #b7b7b7;
+    margin-right: 5px;
+    flex: 0; /* 고정된 너비를 가지도록 설정 */
+}
+.tag-input-box > input{
+    background: transparent;
+    border: none; /* 입력 필드의 테두리 제거 */
+    outline: none; /* 입력 필드의 포커스 효과 제거 */
+    width: 100%; /* 너비 100%로 설정 */
+    flex-grow: 1;
+}
+
+
+/*태그 박스 만들어 두기*/
+
+.tag-box-content{
+    border:1px solid #ddd;
+    display: flex;
+    padding:1rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-top:1rem;
+    margin-bottom: 1rem;
+}
+
+.tag-box-content img{
+    width:2rem;
+    height: 2rem;
+}
+
+
+
+
+/***************/
+/* 알림 설정   */
+/**************/
+.notice-setting-content{
+    margin-top:5rem;
+}
+
+.setting-area{
+    padding:1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.setting-area-member{
+    padding-left:1rem;
+    padding-right:1rem;
+    padding-bottom:0.5rem;
+    padding-top:0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.setting-area-member label{
+    font-size:0.9rem;
+}
+
+.setting-title{
+    font-size:1rem;
+    font-weight: 600;
+    padding-left:1rem;
+}
+
+.user-notice-area{
+    border-bottom:1px solid #ddd;
+    padding-bottom:1rem;
+    padding-top:1rem;
+}
+.tag-notice-area{
+    margin-top:2rem;
+    margin-bottom:2rem;
+}
+
+
+
+/***************/
+/* 글쓰기   */
+/**************/
+
+.write-area{
+    margin-top:5rem;
+    display: flex;
+    flex-direction: column;
+    
+}
+.write-content{
+    display: flex;
+    padding:1rem;
+    width:100%;
+    height: 100%;
+}
+
+.write-profile{
+    width:15%;
+}
+
+.write-word{
+    width:85%;
+    margin-left:1rem;
+}
+
+.write-word-tag{
+    border:1px solid #ddd;
+    display: inline-block;
+    padding-top:0.1rem;
+    padding-bottom:0.1rem;
+    padding-left:0.5rem;
+    padding-right:0.5rem;
+    border-radius: 1rem;
+}
+.write-word-wording {
+    margin-top:0.5rem;
+}
+
+.write-word-wording textarea{
+    font-size:0.9rem;
+    width:100%;
+    resize: none; /* 사용자 크기 조절 비활성화 */
+    overflow: hidden; /* 콘텐츠가 넘칠 때 스크롤바 비활성화 */
+    border:none;
+}
+
+.write-word-wording > textarea:focus{
+    border:none;
+    outline:none;
+}
+
+.Bottom{
+    border-top:1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding:0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.Bottom img{
+    width:2rem;
+    height: 2rem;
+}
+
+
+.write-retwit{
+    padding:1rem;
+    display: flex;
+    border:1px solid #ddd;
+    margin: 1rem;
+    border-radius: 1rem;
+}
+.retwit-img{
+    margin-right:1rem;
+}
+
+.retwit-word-title{
+    display: flex;
+    align-items: center;
+}
+.retwit-word-title p:nth-child(1){
+    margin-right:0.3rem;
+}
+
+.user-post{
+    display: -webkit-box;
+    max-width: 100%;
+    height: 40px; /* 표시하고자 하는 높이 설정 */
+    margin: 0 auto;
+    font-size: 14px;
+    line-height: 20px; /* 텍스트 라인 간격 설정 */
+    -webkit-line-clamp: 2; /* 표시할 줄 수 설정 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; /* 말줄임 표시 설정 */
+    white-space: normal; /* 추가된 부분 수정 */
+}
+
+.prev-content{
+    display: flex;
+    padding:1rem;
+    width:100%;
+}
+
+
+.prev-profile{
+    width:15%;
+}
+
+.prev-word{
+    width:85%;
+    margin-left:1rem;
+}
+
+.prev-word-title{
+    display: flex;
+    align-items: center;
+}
+
+.prev-word-title p:nth-child(1){
+    margin-right:0.3rem;
+}
+
+.prev-user-content{
+    color:#666;
+}
+
+
+
+
+/***************/
+/* 태그 선택    */
+/**************/
+
+.tagPopup.active{
+    display:block;
+    background-color: #fff;
+    width:100%;
+    height: 100%;
+    position: absolute;
+    z-index:10000;
+    top:0;
+}
+
+.tagPopup.deactive{
+    display:none;
+}
+
+.UserFollowList{
+    margin-top:5rem;
+}
+
+.UserTagArea{
+    display: flex;
+    padding:1rem;
+    border-bottom:1px solid #ddd;
+}
+
+.UserTagImage{
+    margin-right:1rem;
+}
+
+.UserTagTitle{
+    display: flex;
+    align-items: center;
+}
+
+.UserTagTitle p:nth-child(1){
+    margin-right:0.3rem;
+}
+
+
+.UserTag p{
+    display: inline-block;
+    margin:0.2rem;
+}
+
+.deactiveTag{
+ display:none;
+ }
+
+
+/***************/
+/*   검색      */
+/**************/
+.search-img,
+.search-profile{
+    margin-right:1rem;
+}
+
+.search-img img{
+    width:2rem;
+}
+
+.search-area{
+    width:80%;
+    border:1px solid #ddd;
+    padding-left:1rem;
+    padding-right:1rem;
+    padding-top:0.3rem;
+    padding-bottom:0.3rem;
+}
+
+.search-area > input:focus{
+    border:none;
+    outline:none;
+}
+
+
+.my-tag-title{
+    margin-left:1rem;
+    margin-right:1rem;
+    margin-bottom:1rem;
+}
+
+.my-tag-area{
+    margin-left:1rem;
+    margin-right:1rem;
+    margin-bottom:1rem;
+}
+
+.search-tag{
+    display:flex;
+    align-items: center;
+    width:100%;
+}
+.search-tag-img{
+    width:20%;
+}
+.search-tag-name{
+    width:60%;
+}
+.search-tag-count{
+    width:20%;
+}
+
+.search-tag-name p{
+    line-height: 1rem;
+}
+.top-tag-select{
+    margin-top:6rem;
+}
+.my-tag-select{
+   margin-bottom:5rem;
+}
+
+
+/***************/
+/*  이미지 업로드  */
+/**************/
+#imageInput,
+#UserImageInput,
+#backgroundInput{
+display : none;
+}
+
+#customFileButton{
+background : url('/img/upload.png') no-repeat;
+background-size : cover;
+width:1.5rem;
+height:1.5rem;
+cursor: pointer;
+}
+
+
+#ProfileBackgroundButton{
+    background : url('/img/update.png') no-repeat;
+    background-size : cover;
+    width:3rem;
+    height:3rem;
+    cursor: pointer;
+}
+
+#ProfileUserImgButton{
+    background : url('/img/update.png') no-repeat;
+    background-size : cover;
+    width:2rem;
+    height:2rem;
+    cursor: pointer;
+}
+
+
+
+/***************/
+/*  딤 처리     */
+/**************/
+
+.dim{
+    background-color:rgba(91, 112, 131, 0.4);
+    opacity: 0.5;
+    width:100%;
+    height: 100%;
+    position: fixed;
+    top:0;
+    z-index:10000;
+    overflow: hidden;
+    touch-action: none;
+    display:none;
+}
+.dim-select-area,
+.dim-setting-area{
+    background-color:#fff;
+    position:fixed;
+    height: 12rem;
+    width:100%;
+    bottom:0;
+    z-index:10001;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    padding:2rem;
+    display:none;
+}
+
+.dim-select-area ul,
+.dim-setting-area ul{
+    padding:0;
+    margin:0;
+}
+
+.dim-select-area li,
+.dim-setting-area li{
+    display:flex;
+    color:#000;
+    margin-bottom:1.5rem;
+    align-items: center;
+}
+
+.more-button{
+    position:relative;
+    bottom:0;
+    border:1px solid #fff;
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+    <!-- ***********************************
+    ***************  메인 포스트  ***********
+    *********************************** -->
+
+    <div class="post-item-area" th:fragment="post-comment" th:each="post : ${postList}">
+
+        <div class="post-item" th:if="${post.status} == 'comment' ">
+          <div class="profile-area" >
+            <a th:href="@{'/' + ${post.Par_personal}}">
+              <img class="profile-image" th:src="${post.Par_profileImg}" alt="profile1">
+            </a>
+            <div class="commnet-line"></div>
+          </div>
+
+          <div class="postarea" th:attr="data-post-id=${post.Par_id}, data-post-check=${post.Par_isPost}, data-post-personal=${post.Par_personal}" onclick="ActiveDetail(event)">
+            <div class="post-title">
+              <p class="font-middle-w post-nickname" th:text="${post.Par_nickName}">닉네임 영역입니다.</p>
+              <p class="font-middle-small post-personal" th:text="|@${post.Par_personal}|">고유 아이디 영역입니다.</p>
+              <p class="font-middle-small post-time" th:text="${post.Par_fUpdateAt}">23시</p>
+
+              <div class="more-options" th:if="${post.Par_loginMemberPost}" onclick="showSelectOptions(event)">
+                <img class="more-image" src="/img/more.png" alt="더보기">
+              </div>
+            </div>
+
+            <div class="post-word">
+              <p class="post-tag" th:if="${post.Par_TagName} != null" onclick="clickTagData(event)">
+                <span class="font-tag selectTagName" th:text="|#${post.Par_TagName}|" >태그 이름이 들어갑니다. </span>
+                <span class="font-tag-small selectPersonalName" th:text="|@${post.Par_TagMemberPersonal}|">태그 작성자 고유 ID가 들어갑니다.</span>
+              </p>
+              <p class="font-middle" th:text="${post.Par_content}">포스트 글 영역입니다.</p>
+              <img th:if="${post.Par_imgUrl} != null" th:src="${post.Par_imgUrl}" src="/img/postimg.jpg" alt="postimg">
+            </div>
+
+            <div class="post-icon">
+              <div class="comment" onclick="writeComment(event)">
+                <img src="/img/commnet.png" alt="comment-icon">
+                <p class="comment-count" th:text="${post.Par_commentCount}">22</p>
+              </div>
+              <div class="retwit" onclick="sendRetwitData(event)">
+                <img class="retwit-icon" src="/img/retwit.png" th:if="${!post.Par_retwitCheck}" th:attr="data-post-retwit=${post.Par_retwitCheck}" alt="retwit-icon">
+                <img class="retwit-icon" src="/img/rfill.png" th:if="${post.Par_retwitCheck}" th:attr="data-post-retwit=${post.Par_retwitCheck}" alt="retwit-icon">
+                <p class="retwit-count" th:text="${post.Par_retwitCount}">2</p>
+              </div>
+              <div class="heart" onclick="sendHeartData(event)">
+                <img class="heart-icon" th:if="${!post.Par_likeCheck}" th:attr="data-post-heart=${post.Par_likeCheck}" src="/img/heart.png" alt="heart-icon">
+                <img class="heart-icon" th:if="${post.Par_likeCheck}" th:attr="data-post-heart=${post.Par_likeCheck}" src="/img/fill.png" alt="heart-icon">
+                <p class="heart-count" th:text="${post.Par_likeCount}">100</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <div class="post-item">
+        <div class="profile-area" >
+          <a th:href="@{'/' + ${post.personal}}">
+            <img class="profile-image" th:src="${post.profileImg}" alt="profile1">
+          </a>
+        </div>
+        <div class="postarea" th:attr="data-post-id=${post.id}, data-post-check=${post.isPost}, data-post-personal=${post.personal}" onclick="ActiveDetail(event)">
+          <p class="font-middle-small" th:if="${post.status} == 'retwit' "><span th:text="|${post.retwitMember}님이|"></span> 재게시했습니다.</p>
+          <div class="post-title">
+            <p class="font-middle-w post-nickname" th:text="${post.nickName}">닉네임 영역입니다.</p>
+            <p class="font-middle-small post-personal" th:text="|@${post.personal}|">고유 아이디 영역입니다.</p>
+            <p class="font-middle-small post-time" th:text="${post.fUpdateAt}">23시</p>
+
+            <div class="more-options" th:if="${post.loginMemberPost}" onclick="showSelectOptions(event)">
+              <img class="more-image" src="/img/more.png" alt="더보기">
+            </div>
+
+          </div>
+          <div class="post-word">
+              <p class="post-tag" th:if="${post.TagName} != null" onclick="clickTagData(event)">
+                <span class="font-tag selectTagName" th:text="|#${post.TagName}|"> 태그 이름이 들어갑니다. </span>
+                <span class="font-tag-small selectPersonalName" th:text="|@${post.TagMemberPersonal}|">태그 작성자 고유 ID가 들어갑니다.</span>
+              </p>
+            <p class="font-middle" th:text="${post.content}">포스트 글 영역입니다.</p>
+            <img th:if="${post.imgUrl} != null" th:src="${post.imgUrl}" alt="postimg">
+          </div>
+          <div class="post-icon">
+            <div class="comment" onclick="writeComment(event)">
+              <img src="/img/commnet.png" alt="comment-icon">
+              <p class="comment-count" th:text="${post.commentCount}">22</p>
+            </div>
+            <div class="retwit" onclick="sendRetwitData(event)">
+              <img class="retwit-icon" src="/img/retwit.png" th:if="${!post.retwitCheck}" th:attr="data-post-retwit=${post.retwitCheck}" alt="retwit-icon">
+              <img class="retwit-icon" src="/img/rfill.png" th:if="${post.retwitCheck}" th:attr="data-post-retwit=${post.retwitCheck}" alt="retwit-icon">
+              <p class="retwit-count" th:text="${post.retwitCount}">2</p>
+            </div>
+            <div class="heart" onclick="sendHeartData(event)">
+              <img class="heart-icon" th:if="${!post.likeCheck}" th:attr="data-post-heart=${post.likeCheck}" src="/img/heart.png" alt="heart-icon">
+              <img class="heart-icon" th:if="${post.likeCheck}" th:attr="data-post-heart=${post.likeCheck}" src="/img/fill.png" alt="heart-icon">
+              <p class="heart-count" th:text="${post.likeCount}">100</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+</body>
+</html>

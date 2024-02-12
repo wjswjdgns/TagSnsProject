@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div th:fragment="dim">
+  <div class="dim"></div>
+
+  <div class="dim-select-area">
+    <ul>
+      <li class="font-middle" onclick="PostEditEvent(this)">
+        <img class="more-icon" src="/img/edit.png" alt="수정">
+        글 수정하기
+      </li>
+      <li class="font-middle" onclick="PostDeleteEvent(this)">
+        <img class="more-icon" src="/img/delete.png" alt="삭제">
+        글 삭제하기
+      </li>
+    </ul>
+    <button class="more-button" onclick="exitSelectOptions()">취소</button>
+  </div>
+
+
+  <div class="dim-setting-area">
+    <ul>
+      <li class="font-middle" onclick="logout()">
+        <img class="more-icon" src="/img/logout.png" alt="수정">
+        <span>로그아웃</span>
+      </li>
+      <li class="font-middle" onclick="removeUser()">
+        <img class="more-icon" src="/img/unsubscribe.png" alt="삭제">
+        회원 탈퇴하기
+      </li>
+    </ul>
+    <button class="more-button" onclick="exitSelectOptions()">취소</button>
+  </div>
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!-- ***********************************
+***************  메인 포스트  ***********
+*********************************** -->
+<div th:fragment="popup" class="tagPopup deactive">
+    <div class="Top">
+        <div class="sub-area">
+            <div class="sub-title-area">
+                <div class="sub-area01" onclick="popupCancel()">
+                    <img src="/img/back.png" alt="back">
+                </div>
+                <div class="sub-area02">
+                    <p class="sub-title">태그를 선택해주세요</p>
+                </div>
+                <div class="sub-area03">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="UserFollowList">
+        <!--팔로우 별 태그 리스트-->
+        <div class="UserTagArea" th:each="followTag : ${followTagList}">
+            <div class="UserTagImage">
+                <img class="profile-image" th:src="${followTag.profileImg}" alt="프로필 이미지">
+            </div>
+            <div class="UserTagContent">
+                <div class="UserTagTitle">
+                    <p class="font-middle-w"><span class="user-nickname" th:text="${followTag.nickName}">닉네임</span></p>
+                    <p  class="font-middle-small"><span class="user-id" th:text="|@${followTag.personal}|">고유Id</span></p>
+                </div>
+                <div class="UserTagList">
+                    <div class="UserTag">
+                        <p th:each="tag:${followTag.tagList}" onclick="clickTag(this)">
+                            <span class="tag-area" th:attr="data-tag-id=${tag.tagId}"  th:text="${tag.tagName}">태그 이름</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

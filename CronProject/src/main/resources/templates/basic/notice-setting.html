@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/header :: header(~{::title})">
+        <title>알림 설정</title>
+    </head>
+    <body>
+        <div class="main-area">
+            <div class="Top">
+                <div class="sub-area">
+                    <div class="sub-title-area">
+                        <div class="sub-area01">
+                            <p onclick="goBack()">취소</p>
+                        </div>
+                        <div class="sub-area02">
+                            <p class="sub-title">알림 설정</p>
+                        </div>
+                        <div class="sub-area03">
+                            <p onclick="SendNotificationData()">저장</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="notice-setting-content">
+                <div class="main_container">
+                    <div class="Sub-Notice">
+                        <div class="user-notice-area">
+                            <div class="user-notice-title">
+                                <p class="setting-title personalMember" th:attr="data-personal=${notification.personal}">사용자 알림</p>
+                            </div>
+                            <div class="userr-notice-user">
+                                <div class="setting-area-member">
+                                    <label for="NoPost">알림을 받지 않습니다.</label>
+                                    <input type="radio" id="NoPost" name="notificationMember" th:checked="${notification.NoPost}">
+                                </div>
+                                <div class="setting-area-member">
+                                    <label for="allPost">모든 게시물의 알림을 받습니다.</label>
+                                    <input type="radio" id="allPost" name="notificationMember" th:checked="${notification.allPost}">
+                                </div>
+                                <div class="setting-area-member">
+                                    <label for="allPostComment">모든 게시물과 댓글의 알림을 받습니다.</label>
+                                    <input type="radio" id="allPostComment" name="notificationMember" th:checked="${notification.allPostComment}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tag-notice-area">
+                            <div class="user-notice-title">
+                                <p class="setting-title">태그 알림 설정</p>
+                            </div>
+                            
+                            <div class="setting-area" th:each="NotificationTag : ${notification.tagList}" th:attr="data-tag-id=${NotificationTag.tagId}">
+                                <!--각각의 태그 알림의 고유 ID 값이 있어야 한다. -->
+                                <p><span class="tag-name" th:text="${NotificationTag.tagName}">#HinaArt</span></p>
+                                <input class="tag-checked" type="checkbox" th:checked="${NotificationTag.check}">
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+           
+        </div>
+
+        <script th:replace="~{fragments/script :: notificationSetting}"></script>
+        <script th:replace="~{fragments/script :: sessionBack}"></script>
+    </body>
+</html>

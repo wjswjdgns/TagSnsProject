@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div th:fragment="bottomNav" class="nav">
+
+      <a th:href="@{/}">
+        <div class="home" onclick="CleanValue()">
+          <img src="/img/home.png" alt="home-icon">
+        </div>
+      </a>
+
+      <a th:href="@{/search}">
+        <div class="research" onclick="CleanValue()">
+          <img src="/img/research.png" alt="research-icon">
+        </div>
+      </a>
+
+      <a th:href="@{/notifications/default}">
+        <div class="notice" onclick="CleanValue()">
+          <img src="/img/notice.png" alt="notice-icon">
+        </div>
+      </a>
+
+      <a th:href="@{/compose/default}">
+        <div class="write">
+          <img src="/img/write.png" alt="write-icon">
+        </div>
+      </a>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header(~{::title})">
+    <title>검색 결과</title>
+</head>
+<body>
+        <div class="main-area">
+            <div class="Top">
+                <div class="main_container">
+                    <div class="profile">
+                        <div class="search-img">
+                            <img src="/img/back.png" alt="profile2" onclick="goBack()">
+                        </div>
+                        <div class="search-area">
+                            <form action="/search/result" method="GET">
+                                <input type="text" id="searchField" name="searchField" placeholder="검색어를 입력해주세요" th:value="${searchWord}">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--콘텐츠 영역입니다.-->
+            <div class="content">
+                <!--포스트가 올라오는 영역-->
+                <div class="Post">
+                    <div th:replace="~{fragments/Post :: post-comment}"></div>
+                </div>
+            </div>
+
+            <div th:replace="~{fragments/nav :: bottomNav}"></div>
+        </div>
+
+        <div th:replace="~{fragments/dim :: dim}"></div>
+       
+    </body>
+    <script th:replace="~{fragments/script :: detail}"></script>
+    <script th:replace="~{fragments/script :: sessionBack}"></script>
+    <script th:replace="~{fragments/script :: moreOption}"></script>
+    <script th:replace="~{fragments/script :: heart}"></script>
+    <script th:replace="~{fragments/script :: comment}"></script>
+    <script th:replace="~{fragments/script :: search}"></script>
+    <script th:replace="~{fragments/script :: retwit}"></script>
+
+</html>
