@@ -7,9 +7,11 @@ import portfolio.CronProject.domain.Follow;
 import portfolio.CronProject.domain.Member;
 import portfolio.CronProject.repository.FollowRepository;
 import portfolio.CronProject.repository.MemberRepository;
+import portfolio.CronProject.web.dto.FilterDto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -74,15 +76,7 @@ public class FollowService {
 
     // 팔로잉 목록 조회
     public List<Member> getFollowingMemberList(Long memberId){
-        List<Follow> followingByMember = followRepository.findFollowingByMember(memberId);
-        List<Member> followList = new ArrayList<>();
-
-        // 팔로우 id를 통해 멤버 리스트를 담아낸다
-        for (Follow follow : followingByMember){
-            followList.add(memberRepository.findOne(follow.getFollowMemberId()));
-        }
-
-        return followList;
+        return memberRepository.findFollowingMember(memberId);
     }
 
     // 팔로워 수 반환

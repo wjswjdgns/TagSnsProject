@@ -71,10 +71,10 @@ function TabMove(arg){
 
     // 링크 이동 (이동 하게 되면 새로운 탭 링크가 추가 될 것)
     if(arg !== "default"){
-        var newPath = '/{personal}/{arg}'.replace('{personal}', personal).replace('{arg}', arg);
+        var newPath = `/${personal}/${arg}`;
     }
     else{
-        var newPath = '/{personal}'.replace('{personal}', personal);
+        var newPath = `/${personal}`;
     }
     // 새로운 URL로 이동
     window.location.href = newPath;

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import portfolio.CronProject.domain.Member;
 import portfolio.CronProject.service.LoginService;
+import portfolio.CronProject.web.argumentresolver.Login;
 import portfolio.CronProject.web.form.LoginForm;
 
 @Slf4j

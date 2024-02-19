@@ -30,13 +30,13 @@ li{
 
 .font-big{
     font-size:2rem;
-    font-weight: 800;
+    font-weight: 600;
     line-height: 1.3;
 }
 
 .font-middlebig{
-    font-size:1rem;
-    font-weight: 400;
+    font-size:1.5rem;
+    font-weight: 600;
 }
 
 .font-middle{
@@ -408,4 +408,23 @@ height:100%;
     height:1rem !important;
     right:0.5rem;
     top:0.5rem;
+}
+
+
+/**
+empty page
+**/
+
+.empty_area{
+    padding:1rem;
+}
+
+.empty_notice{
+    padding-top:9rem;
+}
+
+.empty_search{
+    padding-bottom:4rem;
+    padding-left:1rem;
+    padding-right:1rem;
 }

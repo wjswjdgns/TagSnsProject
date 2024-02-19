@@ -25,7 +25,15 @@
                 <div class="my-tag-title">
                     <p class="font-middle-w">인기 급 상승 태그</p>
                 </div>
-                <div class="my-tag-area" th:each="recommendedTag : ${recommendedTagList}">
+
+                <div th:if="${#lists.isEmpty(recommendedTagList)}">
+                    <div class="empty_search">
+                        <p class="font-middlebig">인기 급 상승하는 태그가 없습니다</p>
+                        <p class="font-middle">자신만의 태그를 만들어서 다른 사람들과 소통을 해보세요</p>
+                    </div>
+                </div>
+
+                <div class="my-tag-area" th:if="${not #lists.isEmpty(recommendedTagList)}" th:each="recommendedTag : ${recommendedTagList}">
                     <div class="search-tag" onclick="sendTagData(this)">
                         <div class="search-tag-img">
                             <img class="profile-image" th:src="${recommendedTag.profileImg}" alt="profile2">
@@ -44,7 +52,14 @@
                 <div class="my-tag-title">
                     <p class="font-middle-w">나를 위한 태그 선택</p>
                 </div>
-                <div class="my-tag-area" th:each="followTag : ${followTagList}">
+                <div th:if="${#lists.isEmpty(followTagList)}">
+                    <div class="empty_search">
+                        <p class="font-middlebig">나를 위한 태그가 없습니다</p>
+                        <p class="font-middle">팔로우 한 사용자들의 태그들이 올라오게 됩니다. 관심 있는 사용자들을 팔로우 해보세요</p>
+                    </div>
+                </div>
+
+                <div class="my-tag-area" th:if="${not #lists.isEmpty(followTagList)}" th:each="followTag : ${followTagList}">
                     <div class="search-tag" onclick="sendTagData(this)">
                         <div class="search-tag-img">
                             <img class="profile-image" th:src="${followTag.profileImg}" alt="profile2">

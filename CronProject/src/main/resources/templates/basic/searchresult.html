@@ -22,8 +22,16 @@
 
             <!--콘텐츠 영역입니다.-->
             <div class="content">
+
+                <div th:if="${#lists.isEmpty(postList)}">
+                    <div class="empty_area">
+                        <p class="font-middlebig"><span th:text="${searchWord}"></span> 에 대한 검색 결과 없음</p>
+                        <p class="font-middle"> 다른 용어를 검색해보거나 원하는 검색이 맞는지 다시 한번 확인해보세요</p>
+                    </div>
+                </div>
+
                 <!--포스트가 올라오는 영역-->
-                <div class="Post">
+                <div th:if="${not #lists.isEmpty(postList)}" class="Post">
                     <div th:replace="~{fragments/Post :: post-comment}"></div>
                 </div>
             </div>

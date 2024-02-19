@@ -36,7 +36,7 @@ public class MypageController {
      * 마이페이지 본인 게시물
      *
      * */
-    @GetMapping("{personal}")
+    @GetMapping("/{personal}")
     public String profile(@PathVariable("personal") String personal, @Login Member loginMember, Model model){
 
         //마이페이지에 들어온 회원 정보를 노출하기
@@ -78,7 +78,7 @@ public class MypageController {
      * 마이페이지 댓글 게시물
      *
      * */
-    @GetMapping("{personal}/comments")
+    @GetMapping("/{personal}/comments")
     public String profileComment(@PathVariable("personal") String personal, @Login Member loginMember, Model model){
 
         //마이페이지에 들어온 회원 정보를 노출하기
@@ -120,7 +120,7 @@ public class MypageController {
      *
      * */
 
-    @GetMapping("{personal}/likes")
+    @GetMapping("/{personal}/likes")
     public String profileLike(@PathVariable("personal") String personal, @Login Member loginMember, Model model){
 
         //마이페이지에 들어온 회원 정보를 노출하기
@@ -157,7 +157,7 @@ public class MypageController {
     }
 
 
-    @GetMapping("{personal}/settings/profile")
+    @GetMapping("/{personal}/settings/profile")
     public String updateProfile(@Login Member loginMember, Model model){
 
         // 왜 이전 정보를 그대로 가지고 있는거지?

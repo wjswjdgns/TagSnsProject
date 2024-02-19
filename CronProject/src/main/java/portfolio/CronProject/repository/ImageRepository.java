@@ -22,5 +22,4 @@ public class ImageRepository {
         return em.find(PostImage.class, postImageId);
     }
 
-
 }

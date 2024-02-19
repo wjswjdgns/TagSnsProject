@@ -33,11 +33,6 @@ public class BasicController {
     // 세션이 없는 경우 리다이렉트로 members/login으로
     // 세션이 있는 경우 메인으로 이동할 수 있도록 한다.
 
-//    @RequestMapping("/")  /*홈 화면으로 지정*/
-//    public String home(){
-//        return "basic/index";
-//    }
-
     // 로그인 안한 사람도 들어오기 때문에 required = false로
     @GetMapping("/")
     public String home(@Login Member loginMember, Model model){
@@ -52,6 +47,7 @@ public class BasicController {
 
         // 세션이 유지되면 로그인으로 이동
         List<Member> followList = followService.getFollowingMemberList(loginMember.getId());
+
         List<FilterDto> filterList = followList.stream()
                 .map(o -> new FilterDto(o, findId))
                 .collect(Collectors.toList());
@@ -88,10 +84,8 @@ public class BasicController {
                 .map(o -> new FilterDto(o, member.getId()))
                 .collect(Collectors.toList());
 
-
         // 포스트의 목록을 다르게 담아야 한다.
         List<MainDto> mainSelectPostList = postService.getMainSelectPostList(loginMember.getId(), member.getId());
-
 
         model.addAttribute("checkAllMember", allMember);
         model.addAttribute("member", memberService.findOne(loginMember.getId()));

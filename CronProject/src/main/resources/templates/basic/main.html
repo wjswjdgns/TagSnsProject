@@ -45,7 +45,13 @@
                 </div>
                 <!--포스트가 올라오는 영역-->
                 <div class="Post">
-                    <div th:replace="~{fragments/Post :: post-comment}"></div>
+                    <div th:if="${#lists.isEmpty(postList)}">
+                        <div class="empty_area">
+                            <p class="font-middlebig">올라온 포스트가 없습니다.</p>
+                            <p class="font-middle">일어나고 있는 일들을 올려서 다른 사람들과 소통해보세요</p>
+                        </div>
+                    </div>
+                    <div th:if="${not #lists.isEmpty(postList)}" th:replace="~{fragments/Post :: post-comment}"></div>
                 </div>
 
             </div>

@@ -61,9 +61,11 @@ public class NotificationsController {
         return "basic/notice";
     }
 
-
+    //
     @PostMapping("/compose/detail")
-    public String redirectDetail(@ModelAttribute ComposePostForm composePostForm){
+    public String redirectDetail(@ModelAttribute ComposePostForm composePostForm, @Login Member loginMember){
+
+        log.info("지금 컨트롤러에 들어온거지?");
 
         String personal = null;
         if(composePostForm.isPostCheck()){

@@ -31,7 +31,7 @@
 
                                 <div class="mypage-button-area" th:case="isOwnProfile">
                                     <!--자기 자신의 경우-->
-                                    <a th:href="@{{personal}/settings/profile(personal=${member.personal})}">
+                                    <a th:href="@{/{personal}/settings/profile(personal=${member.personal})}">
                                         <button class="mypage-button">
                                             <p class="font-middle-w">프로필 수정</p>
                                         </button>
@@ -98,14 +98,26 @@
                     </div>
                 </div>
                 <div class="mypage-content">
-                    <div th:replace="~{fragments/Post :: post-comment}"></div>
+                    <div th:if="${#lists.isEmpty(postList)}" th:switch="${mypageTab}">
+                        <div th:case="default" class="empty_area">
+                            <p class="font-middlebig">게시물을 올려보세요</p>
+                            <p class="font-middle">자신의 게시물을 올려보세요. 남긴 게시물은 여기에 표시됩니다.</p>
+                        </div>
+                        <div th:case="comments" class="empty_area">
+                            <p class="font-middlebig">게시물 몇 개에 답글을 남겨보세요</p>
+                            <p class="font-middle">다른 사용자들의 게시물에 답글을 남겨보세요 답글을 남긴 게시물은 여기에 표시됩니다.</p>
+                        </div>
+                        <div th:case="likes" class="empty_area">
+                            <p class="font-middlebig">게시물 몇 개에 좋아요를 보내세요</p>
+                            <p class="font-middle">좋아하는 게시물의 하트를 눌러 좋아요를 표시해보세요 마음에 들어 한 게시물은 여기에 표시됩니다.</p>
+                        </div>
+                    </div>
+                    <div th:if="${not #lists.isEmpty(postList)}" th:replace="~{fragments/Post :: post-comment}"></div>
                 </div>
             </div>
         </div>
         <div th:replace="~{fragments/nav :: bottomNav}"></div>
         <div th:replace="~{fragments/dim :: dim}"></div>
-
-
     </body>
 
     <script th:replace="~{fragments/script :: heart}"></script>
